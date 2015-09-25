@@ -1,2 +1,4 @@
 # presentations
-presentations about dydra technology and services
+
+This collects presentations about dydra technology and services.
+
