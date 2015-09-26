@@ -257,17 +257,246 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 </div>
 
 
+
 <div class="slide">
- <h1>NXP : the Data Hub : case: delta propagation</h1>
- <div style="position: fixed; left: 40 px">
- Dataset access: ... for programmatic access
+ <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Storage comprises two dimensions
   <ul>
-   <li></li>
+   <li>structure</li>
+    <ul>
+     <li  style="color: gray">enumerated statements</li>
+     <li>B-tree</li>
+     <li  style="color: gray">HDT</li>
+     <li  style="color: gray">relational</li>
+    </ul>
+   <li>
+    <ul>
+     <li  style="color: gray">archival</li>
+     <li  style="color: gray">intermitent merges</li>
+     <li>dynamic revisioned</li>
+    </ul>
+   </li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
+        alt="hdt diagram">
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Storage comprises two dimensions
+  <ul>
+   <li>structure</li>
+    <ul>
+     <li  style="color: gray">enumerated statements</li>
+     <li>B-tree</li>
+     <li  style="color: gray">HDT</li>
+     <li  style="color: gray">relational</li>
+    </ul>
+   <li>
+    <ul>
+     <li  style="color: gray">archival</li>
+     <li  style="color: gray">intermitent merges</li>
+     <li>dynamic revisioned</li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.pdf" >
 </div>
 
 
+<div class="slide">
+ <h1>NXP : the Data Hub : open issues</h1>
+ <div style="position: fixed; left: 40 px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li>A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
+   <li>Insight into query behavior</li>
+   <li>Insight into data model structure</li>
+   <li>Permit abstraction</li>
+  </ul>
+ </div>
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : open issues</h1>
+ <div style="position: fixed; left: 40 px">
+ Some things are not easy. In other words, things we have still to work on:
+  <ul>
+   <li>A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values
+    <ul>
+      <li>reduce setup: cache compiled query components</li>
+      <li>materialize intermediate results: BGP result fields</li>
+      <li>domain-based indices as per ontology; for example temporal, top-1 ordered queries</li>
+    </ul></li>
+   <li style="color: gray">Insight into query behavior</li>
+   <li style="color: gray">Insight into data model structure</li>
+   <li style="color: gray">Permit abstraction</li>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.tiff" >
+
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : open issues</h1>
+ <div style="position: fixed; left: 40 px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
+   <li>Insight into query behavior
+    <ul>
+      <li>visual projection of the algebra graph</li>
+      <li  style="color: gray">retrospective account of operation execution</li>
+    </ul></li>
+   <li style="color: gray">Insight into data model structure</li>
+   <li style="color: gray">Permit abstraction</li>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/venn_dependency-model-path-sub+optionalx2-sip.pdf" >
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : open issues</h1>
+ <div style="position: fixed; left: 40 px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
+   <li>Insight into query behavior
+    <ul>
+      <li  style="color: gray">visual projection of the algebra graph</li>
+      <li>retrospective account of operation execution</li>
+    </ul></li>
+   <li style="color: gray">Insight into data model structure</li>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/venn_dependency-model-path-sub+optionalx2-sip.pdf" >
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : open issues</h1>
+ <div style="position: fixed; left: 40 px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
+   <li style="color: gray">Insight into query behavior</li>
+   <li>Insight into data model structure
+    <ul>
+      <li>reduce setup: cache compiled query components</li>
+      <li>materialize intermediate results: BGP result fields</li>
+      <li>Graph Rover : tailored navigation and presentation</li>
+      <li>Aether VOID Statistics : vocabulary statics across revisions</li>
+      <li>forth.gr : ontology evolution</li>
+    </ul></li>
+   <li style="color: gray">Permit abstraction</li>
+  </ul>
+ </div>
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : open issues</h1>
+ <div style="position: fixed; left: 40 px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
+   <li style="color: gray">Insight into query behavior</li>
+   <li style="color: gray">Insight into data model structure</li>
+   <li>Permit abstraction
+    <ul>
+      <li>named materilised views</li>
+      <li  style="color: gray">scripting: combining named operations</li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-view.tiff" >
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next : product data semantic curation</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint<br />
+     as a key-value store for<br />
+     non-trivial keys and substantial values</li>
+   <li style="color: gray">Insight into query behavior</li>
+   <li style="color: gray">Insight into data model structure</li>
+   <li>Permit abstraction
+    <ul>
+      <li  style="color: gray">named materilised views</li>
+      <li>scripting: combining named operations:<br />
+       Individual requests
+       <ul><li> lose transactional integrity,</li>
+           <li> add latency</li>
+           <li> burden application with logic</li>
+       </ul></li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/cms-sparql-interaction.pdf" >
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: product data semantic curation</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint<br />
+     as a key-value store for<br />
+     non-trivial keys and substantial values</li>
+   <li style="color: gray">Insight into query behavior</li>
+   <li style="color: gray">Insight into data model structure</li>
+   <li>Permit abstraction
+    <ul>
+      <li  style="color: gray">named materilised views</li>
+      <li>scripting: combining named operations<br />
+        consolidated requests
+        <ul><li>transactional integrity</li>
+           <li>simplified application logic</li>
+        </ul></li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/cms-sparql-consolidated.pdf" >
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: product data semantic curation</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint<br />
+     as a key-value store for<br />
+     non-trivial keys and substantial values</li>
+   <li style="color: gray">Insight into query behavior</li>
+   <li style="color: gray">Insight into data model structure</li>
+   <li>Permit abstraction
+    <ul>
+      <li>describe the scripting ontology</li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: product data differentials</h1>
+ <div style="margin-left: 10px; width: 400px">
+ More judicious resource  allocation for propagating changes through the "system"
+  <ul>
+   <li >the system diageam</li>
+   <li >the turtle script</li>
+   <li >the graph</li>
+   <li >a sequence diagram</li>
+   </ul>
+  </div>
+  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/enovia-revisions.png" >
+</div>
 </body>
 </html>
