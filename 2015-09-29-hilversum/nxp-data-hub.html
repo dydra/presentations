@@ -15,7 +15,7 @@
       href="../Slidy2/styles/slidy.css" /> 
 <script src="../Slidy2/scripts/slidy.js" 
         charset="utf-8" type="text/javascript"></script>
-<link rel="stylesheet" href="../Slidy/w3c-blue2.css"
+<link rel="stylesheet" href="../Slidy/dydra-green.css"
       type="text/css" media="screen, projection, print" />
 </head>
 
@@ -263,20 +263,59 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
  <div style="margin-left: 10px; width: 400px">
  Storage comprises two dimensions
   <ul>
-   <li>structure</li>
+   <li>structure
+    <ul>
+     <li>b+-tree</li>
+     <li>structured statement sets</li>
+     <li>ordered statement sets</li>
+     <li>HDT</li>
+    </ul></li>
+   <li>access mode:
+    <ul>
+     <li>archival</li>
+     <li>cache</li>
+     <li>intermittent merges and updates</li>
+     <li>dynamic revisioned</li>
+    </ul></li>
+  </ul>
+ </div>
+ <div style="position: fixed; top: 180px; right: 100px; bottom:60px; height: 440px">
+   <table border="1" padding="2">
+     <caption style="padding-bottom: 5px">access x mode combinations</caption>
+     <tr><td></td>          <td>tree</td> <td>structured</td> <td>ordered</td> <td>HDT</td></tr>
+     <tr><td>archival</td> <td></td> <td></td> <td></td>
+         <td><a href="http://vcftools.sourceforge.net/specs.html">VCF</a>,
+             <a href="http://linkeddatafragments.org" target="_LDF">LDF</a></td>
+     </tr>
+     <tr><td>cache</td> <td></td> <td></td> <td>materialized views</td> <td></td></tr>
+     <tr><td>intermittent</td> <td></td> <td></td> <td>relational (PostgreSQL)</td> <td></td></tr>
+     <tr><td>dynamic</td> <td>repositories</td> <td></td> <td></td> <td></td></tr>
+   </table>
+ </div>
+</div>
+
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
+ <div style="float: right">
+   table for the combinations
+ </div>
+ <div style="margin-left: 10px; width: 400px">
+ Storage comprises two dimensions
+  <ul>
+   <li>structure
     <ul>
      <li  style="color: gray">enumerated statements</li>
-     <li>B-tree</li>
+     <li>b+-tree</li>
      <li  style="color: gray">HDT</li>
      <li  style="color: gray">relational</li>
-    </ul>
-   <li>
+    </ul></li>
+   <li>access mode:
     <ul>
      <li  style="color: gray">archival</li>
-     <li  style="color: gray">intermitent merges</li>
+     <li  style="color: gray">intermittent merges</li>
      <li>dynamic revisioned</li>
-    </ul>
-   </li>
+    </ul></li>
   </ul>
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
@@ -291,20 +330,20 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
    <li>structure</li>
     <ul>
      <li  style="color: gray">enumerated statements</li>
-     <li>B-tree</li>
+     <li>b+-tree</li>
      <li  style="color: gray">HDT</li>
      <li  style="color: gray">relational</li>
     </ul>
    <li>
     <ul>
      <li  style="color: gray">archival</li>
-     <li  style="color: gray">intermitent merges</li>
+     <li  style="color: gray">intermittent merges</li>
      <li>dynamic revisioned</li>
     </ul>
    </li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.pdf" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" >
 </div>
 
 
