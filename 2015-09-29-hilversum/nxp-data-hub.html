@@ -42,7 +42,7 @@
   <div class="footer">
     <div style="height:16px">
      <img style="margin-left: -2px; height:16px" border="0" src="Images/dydra.ico" alt="RDF from: Dydra" width="16" height="16"/>
-     <img style="margin-left: -2px; height:16px" border="0" src="Images/semaku.ico" alt="RDF by: Semaku" width="16 height="16"/>
+     <img style="margin-left: -2px; height:16px" border="0" src="Images/semaku.ico" alt="RDF by: Semaku" width="16" height="16"/>
      <img style="margin-left: -2px; height:16px" border="0" src="Images/nxp.ico" alt="RDF for: NXP" width="16" height="16"/>
     </div>
    <div>PiLOD -- Hilversum -- 2015-09-29</div>
@@ -120,7 +120,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
     <ul>
      <li>Jena</li>
      <li>Sesame</li>
-     <li>ELDA</li>
+     <li>Linked Data API</li>
      <li>YASGUI</li>
     </ul>
    </li>
@@ -193,7 +193,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
            padding: 4px;
            border: outset;
            background: white;">
-  <div style="border-bottom: solid black 1px; padding-bottom: 4px;"> SPARLQL request with XSLT via HTTP</div>
+  <div style="border-bottom: solid black 1px; padding-bottom: 4px;"> SPARQL request with XSLT via HTTP</div>
   <div style="white-space: pre; font: monospace small;">
    curl http://dydra.com/schema-org-test/schema-org/sparql \
         -H "Accept: application/sparql-results+xml"
@@ -216,7 +216,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
    <ul>
     <li style="color: silver">XML, together with XSLT : on import</li>
     <li style="color: silver">XML, together with XSLT : through to recipient</li>
-    <li>JSON results, evolving to JSON/LD</li>
+    <li>JSON results, evolving to JSON-LD</li>
    </ul>
   </li>
 </ul>
@@ -235,7 +235,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
            border: solid 1px silver;
            color: silver;
            background: white;">
-  <div style="border-bottom: solid silver 1px; padding-bottom: 4px;"> SPARLQL request with XSLT via HTTP</div>
+  <div style="border-bottom: solid silver 1px; padding-bottom: 4px;"> SPARQL request with XSLT via HTTP</div>
   <div style="white-space: pre; font: monospace small;">
    curl http://dydra.com/schema-org-test/schema-org/sparql \
         -H "Accept: application/sparql-results+xml"
@@ -250,7 +250,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
            padding: 4px;
            border: outset;
            background: white;">
-  <div style="border-bottom: solid black 1px; padding-bottom: 4px;"> SPARLQL results as JSON-LD</div>
+  <div style="border-bottom: solid black 1px; padding-bottom: 4px;"> SPARQL results as JSON-LD</div>
   <div style="white-space: pre; font: monospace small;">
    curl http://dydra.com/schema-org-test/schema-org/sparql 
   </div>
