@@ -61,7 +61,7 @@
 <p><a href="http://semaku.com/">john walker</a>,
 &lt;<a href="mailto:john.walker@semaku.com">john.walker@semaku.com</a>&gt;</p>
 </div>
-<div class="cover" style="position: fixed; top: 10px; right: 20px; z-index: 10;">
+<div class="cover" style="position: fixed; bottom: 20px; left: 16px; z-index: 10;">
  <div>
   <img style="margin-left: -2px;" border="0" src="Images/dydra.ico" alt="RDF from: Dydra" width="16"/>
   <img style="margin-left: -2px;" border="0" src="Images/semaku.ico" alt="RDF by: Semaku" width="16"/>
@@ -83,28 +83,20 @@
 
 
 <div class="slide">
-<h1>NXP : the Data Hub : what is the problem?</h1>
+<h1>NXP : the Data Hub : the problem</h1>
 <ul >
-  <li>Integrate data sources </li>
-  <li></li>
-  <li></li>
-  <li> </li>
+  <li>...</li>
+  <li>Integrate representations with heterogeneous data sources/destinations</li>
+  <li>Differentiate access by user, authenticate as individuals or by class as basis for authorization</li>
+  <li>Open up otherwise closed systems</li>
+  <li>Integrate processing in enterprise control-flows</li>
+  <li>...</li>
 </ul>
 </div>
 
 
 <div class="slide">
-<h1>NXP : the Data Hub : what is the approach?</h1>
-<ul >
-  <li>Integrate data sources </li>
-  <li></li>
-  <li></li>
-  <li> </li>
-</ul>
-</div>
-
-<div class="slide">
-<h1>NXP : the Data Hub : what is the technology?</h1>
+<h1>NXP : the Data Hub : the technology</h1>
 <p>
 Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service (DaaS)
 
@@ -150,12 +142,137 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
  </p>
 </div>
 
+
 <div class="slide">
- <h1>NXP : the Data Hub : development support: repositories</h1>
+<h1>NXP : the Data Hub : the approach</h1>
+<p>
+<ul >
+  <li>Integrate representations for heterogeneous data sources/destinations
+   <ul>
+    <li>XML, together with XSLT<br /> on import</li>
+   </ul>
+  </li>
+</ul>
+<div style="position:  fixed; top: 120px; right: 40px;
+           padding: 4px;
+           border-style: outset;
+           background: white;">
+  <div style="border-bottom: solid black 1px; padding-bottom: 4px;"> A Graph Store import over HTTP is</div>
+ <div style="white-space: pre; font: monospace small;">
+   curl -X PUT http://dydra.com/schema-org-test/schema-org/service \
+        -H "Content-Type: application/rdf+xml"
+ </div>
+</div>
+ <image style="position: fixed; right: 40px; bottom:100px; height: 200px" src="Images/tibco-flow.png" >
+</p>
+</div>
+
+
+<div class="slide">
+<h1>NXP : the Data Hub : is the approach</h1>
+<p>
+<ul >
+  <li>Integrate representations for heterogeneous data sources/destinations
+   <ul>
+    <li style="color: silver">XML, together with XSLT : on import</li>
+    <li>XML, together with XSLT : through to recipient</li>
+   </ul>
+  </li>
+</ul>
+<div style="position:  fixed; top: 120px; right: 40px;
+           padding: 4px;
+           border: solid 1px silver;
+           color: silver;">
+  <div style="border-bottom: solid silver 1px; padding-bottom: 4px;"> A Graph Store import over HTTP is</div>
+ <div style="white-space: pre; font: monospace small;">
+   curl -X PUT http://dydra.com/schema-org-test/schema-org/service \
+        -H "Content-Type: application/rdf+xml"
+ </div>
+</div>
+ <div style="position: fixed; top: 160px; right: 40px;
+           padding: 4px;
+           border: outset;
+           background: white;">
+  <div style="border-bottom: solid black 1px; padding-bottom: 4px;"> SPARLQL request with XSLT via HTTP</div>
+  <div style="white-space: pre; font: monospace small;">
+   curl http://dydra.com/schema-org-test/schema-org/sparql \
+        -H "Accept: application/sparql-results+xml"
+  </div>
+  becomes
+  <div style="white-space: pre; font: monospace small;">
+   curl 'http://dydra.com/schema-org-test/schema-org/sparql?style-sheet=some-stylesheet' \
+        -H "Accept: application/sparql-results+xml"
+  </div>
+ </div>
+ <image style="position: fixed; right: 40px; bottom:100px; height: 200px" src="Images/tibco-to-spider-flow.png" >
+</p>
+</div>
+
+<div class="slide">
+<h1>NXP : the Data Hub : the approach</h1>
+<p>
+<ul >
+  <li>Integrate representations for heterogeneous data sources/destinations
+   <ul>
+    <li style="color: silver">XML, together with XSLT : on import</li>
+    <li style="color: silver">XML, together with XSLT : through to recipient</li>
+    <li>JSON results, evolving to JSON/LD</li>
+   </ul>
+  </li>
+</ul>
+<div style="position:  fixed; top: 120px; right: 40px;
+           padding: 4px;
+           border: solid 1px silver;
+           color: silver;">
+  <div style="border-bottom: solid silver 1px; padding-bottom: 4px;"> A Graph Store import over HTTP is</div>
+ <div style="white-space: pre; font: monospace small;">
+   curl -X PUT http://dydra.com/schema-org-test/schema-org/service \
+        -H "Content-Type: application/rdf+xml"
+ </div>
+</div>
+ <div style="position: fixed; top: 160px; right: 40px;
+           padding: 4px;
+           border: solid 1px silver;
+           color: silver;
+           background: white;">
+  <div style="border-bottom: solid silver 1px; padding-bottom: 4px;"> SPARLQL request with XSLT via HTTP</div>
+  <div style="white-space: pre; font: monospace small;">
+   curl http://dydra.com/schema-org-test/schema-org/sparql \
+        -H "Accept: application/sparql-results+xml"
+  </div>
+  becomes
+  <div style="white-space: pre; font: monospace small;">
+   curl 'http://dydra.com/schema-org-test/schema-org/sparql?style-sheet=some-stylesheet' \
+        -H "Accept: application/sparql-results+xml"
+  </div>
+ </div>
+ <div style="position: fixed; top: 200px; right: 40px;
+           padding: 4px;
+           border: outset;
+           background: white;">
+  <div style="border-bottom: solid black 1px; padding-bottom: 4px;"> SPARLQL results as JSON-LD</div>
+  <div style="white-space: pre; font: monospace small;">
+   curl http://dydra.com/schema-org-test/schema-org/sparql 
+  </div>
+  requires just
+  <div style="white-space: pre; font: monospace small;">
+   curl http://dydra.com/schema-org-test/schema-org/sparql -H "Accept: application/ld+json"
+  </div>
+ </div>
+ <image style="position: fixed; left: 40px; bottom:100px; height: 350px" src="Images/dydra-shadow.png" >
+ </p>
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : development support: accounts</h1>
  <div style="position: fixed; left: 40 px">
  Site components:
   <ul>
-   <li>accounts</li>
+   <li>accounts
+    <ul>
+     <li>agent identity</li>
+     <li>access authorization</li>
+    </ul></li>
    <li>repositories</li>
   </ul>
  </div>
