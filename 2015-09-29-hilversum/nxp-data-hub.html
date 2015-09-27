@@ -259,29 +259,14 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
    curl http://dydra.com/schema-org-test/schema-org/sparql -H "Accept: application/ld+json"
   </div>
  </div>
- <image style="position: fixed; left: 40px; bottom:100px; height: 350px" src="Images/dydra-shadow.png" >
+ <image style="position: fixed; left: 20px; bottom:100px; height: 350px" src="Images/dydra-shadow.png" >
  </p>
 </div>
 
-<div class="slide">
- <h1>NXP : the Data Hub : development support: accounts</h1>
- <div style="position: fixed; left: 40 px">
- Site components:
-  <ul>
-   <li>accounts
-    <ul>
-     <li>agent identity</li>
-     <li>access authorization</li>
-    </ul></li>
-   <li>repositories</li>
-  </ul>
- </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/account.png" >
-</div>
 
 <div class="slide">
  <h1>NXP : the Data Hub : development support: repositories</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Site components:
   <ul>
    <li>accounts : provide multi-tenanacy
@@ -298,7 +283,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : development support: interactive access</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Site components:
   <ul>
    <li style="color: gray">accounts</li>
@@ -318,7 +303,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : development support: interactive access</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Site components:
   <ul>
    <li style="color: gray">accounts</li>
@@ -340,7 +325,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : development support: interactive access</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Query access: development and testing ...
   <ul>
    <li></li>
@@ -352,8 +337,8 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : development support: interactive access</h1>
- <div style="position: fixed; left: 40 px">
- Query access: ... with pathway to ...
+ <div style="position: fixed; left: 20px">
+ Query access: ... with pathway, via views, to ...
   <ul>
    <li></li>
   </ul>
@@ -364,10 +349,9 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : development support: repositories</h1>
- <div style="position: fixed; left: 40 px">
- Query access: ... programmatic requests
+ <div style="position: fixed; left: 20px">
+ Query access: ... programmatic requests ...
   <ul>
-   <li></li>
   </ul>
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-view.tiff" >
@@ -375,10 +359,9 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : development support: repositories</h1>
- <div style="position: fixed; left: 40 px">
- Dataset access: first class views ...
+ <div style="position: fixed; left: 20px">
+ Query access: ... via first class views ...
   <ul>
-   <li></li>
   </ul>
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-admin-to-history.tiff" >
@@ -387,10 +370,9 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : development support: repositories</h1>
- <div style="position: fixed; left: 40 px">
- Dataset access: ... for programmatic access
+ <div style="position: fixed; left: 20px">
+ Query access: ... and dynamic access to revision history.
   <ul>
-   <li></li>
   </ul>
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.tiff" >
@@ -399,11 +381,23 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : case - product data propagation</h1>
- <div style="position: fixed; left: 40 px">
- Dataset access: ... for programmatic access
+ <div style="position: fixed; left: 20px; width: 400px;">
+ Dataset access: ... with support for a variety of designators to facilitate programmatic access:
   <ul>
-   <li></li>
+   <li>UUID revision identifier: ad278158-020b-b940-a137-f721b69fa314</li>
+   <li>ordinal revision identifier: 1, 2, 200</li>
+   <li>SYMBOLIC : HEAD</li>
+   <li>RELATIVE : HEAD~2</li>
+   <li style="color: silver">ISO-8601 : 2015-09-29T10:00:00Z</li>
+   <li style="color: silver">UNIX timestamp</li>
+   <li style="color: silver">tag via provenance record</li>
   </ul>
+ for example:
+  <div style="position: fixed; bottom: 50px; white-space: pre; font: monospace small;">
+   curl http://dydra.com/schema-org-test/schema-org/sparql?revision=ad278158-020b-b940-a137-f721b69fa314 \
+    -H "Accept: application/ld+json"
+  </div>
+
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.tiff" >
 </div>
@@ -446,59 +440,208 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
  </div>
 </div>
 
-
 <div class="slide">
  <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
  <div style="margin-left: 10px; width: 400px">
- Storage comprises two dimensions
-  <ul>
-   <li>structure
-    <ul>
-     <li  style="color: gray">enumerated statements</li>
-     <li>b+-tree</li>
-     <li  style="color: gray">HDT</li>
-     <li  style="color: gray">relational</li>
-    </ul></li>
-   <li>access mode:
-    <ul>
-     <li  style="color: gray">archival</li>
-     <li  style="color: gray">intermittent merges</li>
-     <li>dynamic revisioned</li>
-    </ul></li>
-  </ul>
+ Storage : repositories : dynamic, revisioned, b+tree
+ </div>
+ <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
+   <table border="1" padding="2">
+     <caption style="padding-bottom: 5px">access x mode combinations</caption>
+     <tr><td></td>          <td>tree</td> <td>structured</td> <td>ordered</td> <td>HDT</td></tr>
+     <tr><td>archival</td> <td></td> <td></td> <td>backup</td>
+         <td>VCF, LDF</td>
+     </tr>
+     <tr><td>cache</td> <td></td> <td></td> <td>materialized views</td> <td></td></tr>
+     <tr><td>intermittent</td> <td></td>  <td>relational (PostgreSQL)</td> <td></td> <td></td></tr>
+     <tr><td>dynamic</td> <td style="color: black;">repositories</td> <td></td> <td></td> <td></td></tr>
+   </table>
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
         alt="hdt diagram">
 </div>
 
+
 <div class="slide">
  <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
  <div style="margin-left: 10px; width: 400px">
- Storage comprises two dimensions
-  <ul>
-   <li>structure</li>
-    <ul>
-     <li  style="color: gray">enumerated statements</li>
-     <li>b+-tree</li>
-     <li  style="color: gray">HDT</li>
-     <li  style="color: gray">relational</li>
-    </ul>
-   <li>
-    <ul>
-     <li  style="color: gray">archival</li>
-     <li  style="color: gray">intermittent merges</li>
-     <li>dynamic revisioned</li>
-    </ul>
-   </li>
-  </ul>
+ Storage : repositories : dynamic, revisioned, b+tree
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" >
+ <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
+   <table border="1" padding="2">
+     <caption style="padding-bottom: 5px">access x mode combinations</caption>
+     <tr><td></td>          <td>tree</td> <td>structured</td> <td>ordered</td> <td>HDT</td></tr>
+     <tr><td>archival</td> <td></td> <td></td> <td>backup</td>
+         <td>VCF, LDF</td>
+     </tr>
+     <tr><td>cache</td> <td></td> <td></td> <td>materialized views</td> <td></td></tr>
+     <tr><td>intermittent</td> <td></td>  <td style="color: black;">relational (PostgreSQL)</td> <td></td> <td></td></tr>
+     <tr><td>dynamic</td> <td>repositories</td> <td></td> <td></td> <td></td></tr>
+   </table>
+ </div>
+ <div style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px;">
+  A decimated structure would be declared as
+  <div style=" white-space: pre;  monospace ; font-size: small; line-height: 1">
+   pgsql {
+     tr_crop_plots_seed_start {
+       storage pgsql
+       pgsql-table public.tr_crop_plots_seed_start
+     }
+     tr_crop_plots_seed_end {
+       storage pgsql
+       pgsql-table public.tr_crop_plots_seed_end
+     }
+     tr_crop_plots_seed {
+       storage pgsql
+       pgsql-table public.tr_crop_plots_seed
+     }
+   }
+  </div>
+with the Postgres views defined as
+<div style=" white-space: pre; font-family: monospace ; font-size: small; line-height: 1">
+
+            View "marti.tr_crop_plots_seed"
+   Column | Type | Modifiers | Storage  | Description 
+   --------+------+-----------+----------+-------------
+    s      | text |           | extended | 
+    p      | text |           | extended | 
+    o      | text |           | extended | 
+   View definition:
+    SELECT concat('http://example.org/plot/', tr_crop_plots.crop_plot) AS s,
+       'http://example.org/seed'::text AS p,
+       tr_crop_plots.seed AS o
+      FROM tr_crop_plots;
+
+             View "marti.tr_crop_plots_seed_end"
+    Column |  Type   | Modifiers | Storage  | Description 
+   --------+---------+-----------+----------+-------------
+    s      | text    |           | extended | 
+    p      | unknown |           | plain    | 
+    o      | date    |           | plain    | 
+   View definition:
+    SELECT concat('http://example.org/plot/', tr_crop_plots.crop_plot) AS s,
+       'http://example.org/end_date' AS p,
+       tr_crop_plots.end_date AS o
+      FROM tr_crop_plots;
+
+            View "marti.tr_crop_plots_seed_start"
+    Column |  Type   | Modifiers | Storage  | Description 
+   --------+---------+-----------+----------+-------------
+    s      | text    |           | extended | 
+    p      | unknown |           | plain    | 
+    o      | date    |           | plain    | 
+   View definition:
+    SELECT concat('http://example.org/plot/', tr_crop_plots.crop_plot) AS s,
+       'http://example.org/start_date' AS p,
+       tr_crop_plots.start_date AS o
+      FROM tr_crop_plots;
+
+  </div>
+ </div>
+</div>
+
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Storage : repositories : dynamic, revisioned, b+tree
+ </div>
+ <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
+   <table border="1" padding="2">
+     <caption style="padding-bottom: 5px">access x mode combinations</caption>
+     <tr><td></td>          <td>tree</td> <td>structured</td> <td>ordered</td> <td>HDT</td></tr>
+     <tr><td>archival</td> <td></td> <td></td> <td>backup</td>
+         <td>VCF, LDF</td>
+     </tr>
+     <tr><td>cache</td> <td></td> <td></td> <td>materialized views</td> <td></td></tr>
+     <tr><td>intermittent</td> <td></td>  <td style="color: black;">relational (PostgreSQL)</td> <td></td> <td></td></tr>
+     <tr><td>dynamic</td> <td>repositories</td> <td></td> <td></td> <td></td></tr>
+   </table>
+ </div>
+ <div style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px;">
+  A field structure would be declared as
+  <div style=" white-space: pre;  monospace ; font-size: small; line-height: 1">
+  ?
+  </div>
+with the Postgres views defined as
+<div style=" white-space: pre; font-family: monospace ; font-size: small; line-height: 1">
+?
+
+  </div>
+ </div>
+</div>
+
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Storage : repositories : dynamic, revisioned, b+tree
+ </div>
+ <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
+   <table border="1" padding="2">
+     <caption style="padding-bottom: 5px">access x mode combinations</caption>
+     <tr><td></td>          <td>tree</td> <td>structured</td> <td>ordered</td> <td>HDT</td></tr>
+     <tr><td>archival</td> <td></td> <td></td> <td style="color: black;">backup</td>
+         <td>VCF, LDF</td>
+     </tr>
+     <tr><td>cache</td> <td></td> <td></td> <td>materialized views</td> <td></td></tr>
+     <tr><td>intermittent</td> <td></td>  <td>relational (PostgreSQL)</td> <td></td> <td></td></tr>
+     <tr><td>dynamic</td> <td >repositories</td> <td></td> <td></td> <td></td></tr>
+   </table>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
+        alt="hdt diagram">
+</div>
+
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Storage : repositories : dynamic, revisioned, b+tree
+ </div>
+ <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
+   <table border="1" padding="2">
+     <caption style="padding-bottom: 5px">access x mode combinations</caption>
+     <tr><td></td>          <td>tree</td> <td>structured</td> <td>ordered</td> <td>HDT</td></tr>
+     <tr><td>archival</td> <td></td> <td></td> <td>backup</td>
+         <td>VCF, LDF</td>
+     </tr>
+     <tr><td>cache</td> <td></td> <td></td> <td style="color: black;">materialized views</td> <td></td></tr>
+     <tr><td>intermittent</td> <td></td>  <td>relational (PostgreSQL)</td> <td></td> <td></td></tr>
+     <tr><td>dynamic</td> <td>repositories</td> <td></td> <td></td> <td></td></tr>
+   </table>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
+        alt="hdt diagram">
+</div>
+
+
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Storage : repositories : dynamic, revisioned, b+tree
+ </div>
+ <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
+   <table border="1" padding="2">
+     <caption style="padding-bottom: 5px">access x mode combinations</caption>
+     <tr><td></td>          <td>tree</td> <td>structured</td> <td>ordered</td> <td>HDT</td></tr>
+     <tr><td>archival</td> <td></td> <td></td> <td>backup</td>
+         <td style="color: black;">VCF, LDF</td>
+     </tr>
+     <tr><td>cache</td> <td></td> <td></td> <td>materialized views</td> <td></td></tr>
+     <tr><td>intermittent</td> <td></td>  <td>relational (PostgreSQL)</td> <td></td> <td></td></tr>
+     <tr><td>dynamic</td> <td >repositories</td> <td></td> <td></td> <td></td></tr>
+   </table>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
+        alt="hdt diagram">
 </div>
 
 
 <div class="slide">
  <h1>NXP : the Data Hub : open issues</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Some things are not easy, that is, things we are working on
   <ul>
    <li>A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
@@ -511,7 +654,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : open issues</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Some things are not easy. In other words, things we have still to work on:
   <ul>
    <li>A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values
@@ -531,7 +674,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : open issues</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Some things are not easy, that is, things we are working on
   <ul>
    <li style="color: gray">A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
@@ -549,7 +692,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : open issues</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Some things are not easy, that is, things we are working on
   <ul>
    <li style="color: gray">A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
@@ -566,7 +709,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : open issues</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Some things are not easy, that is, things we are working on
   <ul>
    <li style="color: gray">A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
@@ -586,7 +729,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : open issues</h1>
- <div style="position: fixed; left: 40 px">
+ <div style="position: fixed; left: 20px">
  Some things are not easy, that is, things we are working on
   <ul>
    <li style="color: gray">A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
