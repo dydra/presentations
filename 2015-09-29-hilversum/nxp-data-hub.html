@@ -298,7 +298,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
    </li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-admin-query.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-admin-query.png" >
 </div>
 
 <div class="slide">
@@ -328,10 +328,9 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
  <div style="position: fixed; left: 20px">
  Query access: development and testing ...
   <ul>
-   <li></li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-editor.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-editor.png" >
 </div>
 
 
@@ -340,10 +339,9 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
  <div style="position: fixed; left: 20px">
  Query access: ... with pathway, via views, to ...
   <ul>
-   <li></li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-editor-to-view.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-editor-to-view.png" >
 </div>
 
 
@@ -354,7 +352,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
   <ul>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-view.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-view.png" >
 </div>
 
 <div class="slide">
@@ -364,7 +362,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
   <ul>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-admin-to-history.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-admin-to-history.png" >
 </div>
 
 
@@ -375,7 +373,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
   <ul>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.png" >
 </div>
 
 
@@ -399,7 +397,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
   </div>
 
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.png" >
 </div>
 
 
@@ -457,7 +455,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
      <tr><td>dynamic</td> <td style="color: black;">repositories</td> <td></td> <td></td> <td></td></tr>
    </table>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
+ <image style="position: fixed; top: 140px; right: 80px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
         alt="hdt diagram">
 </div>
 
@@ -465,7 +463,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 <div class="slide">
  <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
  <div style="margin-left: 10px; width: 400px">
- Storage : repositories : dynamic, revisioned, b+tree
+ Storage : repositories : relational store, decimated as triple sources
  </div>
  <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
    <table border="1" padding="2">
@@ -479,10 +477,14 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
      <tr><td>dynamic</td> <td>repositories</td> <td></td> <td></td> <td></td></tr>
    </table>
  </div>
- <div style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px;">
+ <div style="position: fixed; top: 80px; right: 60px; top:100px; height: 440px;">
   A decimated structure would be declared as
   <div style=" white-space: pre;  monospace ; font-size: small; line-height: 1">
    pgsql {
+     tr_crop_plots_seed {
+       storage pgsql
+       pgsql-table public.tr_crop_plots_seed
+     }
      tr_crop_plots_seed_start {
        storage pgsql
        pgsql-table public.tr_crop_plots_seed_start
@@ -491,51 +493,30 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
        storage pgsql
        pgsql-table public.tr_crop_plots_seed_end
      }
-     tr_crop_plots_seed {
-       storage pgsql
-       pgsql-table public.tr_crop_plots_seed
-     }
    }
   </div>
 with the Postgres views defined as
 <div style=" white-space: pre; font-family: monospace ; font-size: small; line-height: 1">
+   CREATE OR REPLACE VIEW public.tr_crop_plots_seed 
+   AS SELECT NULL::text AS g,
+             CONCAT('http://example.org/plot/', crop_plot) AS s,
+             'http://example.org/seed'::text AS p,
+             seed AS o 
+   FROM farm.tr_crop_plots;
 
-            View "marti.tr_crop_plots_seed"
-   Column | Type | Modifiers | Storage  | Description 
-   --------+------+-----------+----------+-------------
-    s      | text |           | extended | 
-    p      | text |           | extended | 
-    o      | text |           | extended | 
-   View definition:
-    SELECT concat('http://example.org/plot/', tr_crop_plots.crop_plot) AS s,
-       'http://example.org/seed'::text AS p,
-       tr_crop_plots.seed AS o
-      FROM tr_crop_plots;
+   CREATE OR REPLACE VIEW public.tr_crop_plots_seed_start 
+   AS SELECT NULL::text AS g,
+             CONCAT('http://example.org/plot/', crop_plot) AS s,
+             'http://example.org/start_date'::text AS p,
+             start_date AS o 
+   FROM farm.tr_crop_plots;
 
-             View "marti.tr_crop_plots_seed_end"
-    Column |  Type   | Modifiers | Storage  | Description 
-   --------+---------+-----------+----------+-------------
-    s      | text    |           | extended | 
-    p      | unknown |           | plain    | 
-    o      | date    |           | plain    | 
-   View definition:
-    SELECT concat('http://example.org/plot/', tr_crop_plots.crop_plot) AS s,
-       'http://example.org/end_date' AS p,
-       tr_crop_plots.end_date AS o
-      FROM tr_crop_plots;
-
-            View "marti.tr_crop_plots_seed_start"
-    Column |  Type   | Modifiers | Storage  | Description 
-   --------+---------+-----------+----------+-------------
-    s      | text    |           | extended | 
-    p      | unknown |           | plain    | 
-    o      | date    |           | plain    | 
-   View definition:
-    SELECT concat('http://example.org/plot/', tr_crop_plots.crop_plot) AS s,
-       'http://example.org/start_date' AS p,
-       tr_crop_plots.start_date AS o
-      FROM tr_crop_plots;
-
+   CREATE OR REPLACE VIEW public.tr_crop_plots_seed_end 
+   AS SELECT NULL::text AS g,
+             CONCAT('http://example.org/plot/', crop_plot) AS s,
+             'http://example.org/end_date'::text AS p,
+             end_date AS o 
+   FROM farm.tr_crop_plots;
   </div>
  </div>
 </div>
@@ -544,7 +525,7 @@ with the Postgres views defined as
 <div class="slide">
  <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
  <div style="margin-left: 10px; width: 400px">
- Storage : repositories : dynamic, revisioned, b+tree
+ Storage : repositories : relational store, projected as a view
  </div>
  <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
    <table border="1" padding="2">
@@ -558,15 +539,25 @@ with the Postgres views defined as
      <tr><td>dynamic</td> <td>repositories</td> <td></td> <td></td> <td></td></tr>
    </table>
  </div>
- <div style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px;">
-  A field structure would be declared as
+ <div style="position: fixed; top: 80px; right: 60px; top:100px; height: 440px;">
+  A BGP/solution field would be declared as
   <div style=" white-space: pre;  monospace ; font-size: small; line-height: 1">
-  ?
+     pgsql {
+       tr_crop_plots_seed {
+           storage pgsql
+           pgsql-table public.tr_crop_plots_seed
+       }
+    }
   </div>
-with the Postgres views defined as
+with the unified Postgres view defined as
 <div style=" white-space: pre; font-family: monospace ; font-size: small; line-height: 1">
-?
-
+   CREATE OR REPLACE VIEW public.tr_crop_plots_seed
+   AS SELECT NULL::text AS g,
+             concat('http://example.org/plot/', crop_plot) AS plot
+             seed as plot_seed
+             start_date AS plot_start
+             end_date AS plot_end
+   FROM farm.tr_crop_plots;
   </div>
  </div>
 </div>
@@ -575,7 +566,7 @@ with the Postgres views defined as
 <div class="slide">
  <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
  <div style="margin-left: 10px; width: 400px">
- Storage : repositories : dynamic, revisioned, b+tree
+ Storage : repositories : archival backups
  </div>
  <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
    <table border="1" padding="2">
@@ -589,7 +580,7 @@ with the Postgres views defined as
      <tr><td>dynamic</td> <td >repositories</td> <td></td> <td></td> <td></td></tr>
    </table>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
+ <image style="position: fixed; top: 140px; right: 200px; bottom:60px; height: 440px" src="Images/quad-backups.png" 
         alt="hdt diagram">
 </div>
 
@@ -597,7 +588,11 @@ with the Postgres views defined as
 <div class="slide">
  <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
  <div style="margin-left: 10px; width: 400px">
- Storage : repositories : dynamic, revisioned, b+tree
+ Storage : repositories : archival: active
+ <ul>
+  <li>Materialized views and strong cache identifiers—efficient remote access to named result sets.</li>
+  <li>results from single (g s p o) patterns, for property path computations</li>
+ </ul>
  </div>
  <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
    <table border="1" padding="2">
@@ -611,16 +606,41 @@ with the Postgres views defined as
      <tr><td>dynamic</td> <td>repositories</td> <td></td> <td></td> <td></td></tr>
    </table>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
+ <image style="position: fixed; top: 200px; right: 60px; bottom:60px; height: 360px" src="Images/pattern-cache.png" 
         alt="hdt diagram">
 </div>
-
 
 
 <div class="slide">
  <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
  <div style="margin-left: 10px; width: 400px">
- Storage : repositories : dynamic, revisioned, b+tree
+ Storage : repositories : archival: active
+ <ul>
+  <li>Materialized views and strong cache identifiers—efficient remote access to named result sets.</li>
+  <li>results from multiple (g s p o) patterns, for combinations and bgp-local constraints</li>
+ </ul>
+ </div>
+ <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
+   <table border="1" padding="2">
+     <caption style="padding-bottom: 5px">access x mode combinations</caption>
+     <tr><td></td>          <td>tree</td> <td>structured</td> <td>ordered</td> <td>HDT</td></tr>
+     <tr><td>archival</td> <td></td> <td></td> <td>backup</td>
+         <td>VCF, LDF</td>
+     </tr>
+     <tr><td>cache</td> <td></td> <td></td> <td style="color: black;">materialized views</td> <td></td></tr>
+     <tr><td>intermittent</td> <td></td>  <td>relational (PostgreSQL)</td> <td></td> <td></td></tr>
+     <tr><td>dynamic</td> <td>repositories</td> <td></td> <td></td> <td></td></tr>
+   </table>
+ </div>
+ <image style="position: fixed; top:  200px; right: 60px; bottom:60px; height: 360px" src="Images/field-cache.png" 
+        alt="hdt diagram">
+</div>
+
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Storage : repositories : cache : variant call format in HDT
  </div>
  <div style="position: fixed; bottom: 100px; left: 20px; font-size: small; color: silver;">
    <table border="1" padding="2">
@@ -634,8 +654,10 @@ with the Postgres views defined as
      <tr><td>dynamic</td> <td >repositories</td> <td></td> <td></td> <td></td></tr>
    </table>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/revisioned-storage.png" 
-        alt="hdt diagram">
+ <div style="position: fixed; top: 200px; right: 100px; bottom:60px; height: 500px">
+  
+  <image src="Images/vcf-to-hdt.png" alt="vcf diagram" >
+ </div>
 </div>
 
 
@@ -647,7 +669,8 @@ with the Postgres views defined as
    <li>A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
    <li>Insight into query behavior</li>
    <li>Insight into data model structure</li>
-   <li>Permit abstraction</li>
+   <li>Facilitate abstraction</li>
+   <li>Enable compliance</li>
   </ul>
  </div>
 </div>
@@ -665,10 +688,11 @@ with the Postgres views defined as
     </ul></li>
    <li style="color: gray">Insight into query behavior</li>
    <li style="color: gray">Insight into data model structure</li>
-   <li style="color: gray">Permit abstraction</li>
+   <li style="color: gray">Facilitate abstraction</li>
+   <li style="color: gray">Enable compliance</li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-history.png" >
 
 </div>
 
@@ -684,7 +708,8 @@ with the Postgres views defined as
       <li  style="color: gray">retrospective account of operation execution</li>
     </ul></li>
    <li style="color: gray">Insight into data model structure</li>
-   <li style="color: gray">Permit abstraction</li>
+   <li style="color: gray">Facilitate abstraction</li>
+   <li style="color: gray">Enable compliance</li>
   </ul>
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/venn_dependency-model-path-sub+optionalx2-sip.pdf" >
@@ -702,6 +727,8 @@ with the Postgres views defined as
       <li>retrospective account of operation execution</li>
     </ul></li>
    <li style="color: gray">Insight into data model structure</li>
+   <li style="color: gray">Facilitate abstraction</li>
+   <li style="color: gray">Enable compliance</li>
   </ul>
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/venn_dependency-model-path-sub+optionalx2-sip.pdf" >
@@ -722,7 +749,8 @@ with the Postgres views defined as
       <li>Aether VOID Statistics : vocabulary statics across revisions</li>
       <li>forth.gr : ontology evolution</li>
     </ul></li>
-   <li style="color: gray">Permit abstraction</li>
+   <li style="color: gray">Facilitate abstraction</li>
+   <li style="color: gray">Enable compliance</li>
   </ul>
  </div>
 </div>
@@ -735,16 +763,41 @@ with the Postgres views defined as
    <li style="color: gray">A tendency to treat a SPARQL endpoint as a key-value store for non-trivial keys and substantial values</li>
    <li style="color: gray">Insight into query behavior</li>
    <li style="color: gray">Insight into data model structure</li>
-   <li>Permit abstraction
+   <li>Facilitate abstraction
     <ul>
-      <li>named materilised views</li>
+      <li>named materialised views</li>
       <li  style="color: gray">scripting: combining named operations</li>
     </ul>
    </li>
+   <li style="color: gray">Enable compliance</li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-view.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/sparql-view.png" >
 </div>
+
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: product data semantic curation</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint<br />
+     as a key-value store for<br />
+     non-trivial keys and substantial values</li>
+   <li style="color: gray">Insight into query behavior</li>
+   <li style="color: gray">Insight into data model structure</li>
+   <li>Facilitate abstraction
+    <ul>
+      <li  style="color: gray">named materialised views</li>
+      <li>Scripts combine named SPARQL views and Graph Store operations</li>
+    </ul>
+   </li>
+   <li style="color: gray">Enable compliance</li>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 100px; right: 40px; bottom:60px; height: 1000px" src="Images/request-ontology.pdf" >
+</div>
+
 
 <div class="slide">
  <h1>NXP : the Data Hub : next : product data semantic curation</h1>
@@ -756,10 +809,10 @@ with the Postgres views defined as
      non-trivial keys and substantial values</li>
    <li style="color: gray">Insight into query behavior</li>
    <li style="color: gray">Insight into data model structure</li>
-   <li>Permit abstraction
+   <li>Facilitate abstraction
     <ul>
-      <li  style="color: gray">named materilised views</li>
-      <li>scripting: combining named operations:<br />
+      <li style="color: gray">named materialised views</li>
+      <li>Scripts combine named SPARQL views and Graph Store operations:<br />
        Individual requests
        <ul><li> lose transactional integrity,</li>
            <li> add latency</li>
@@ -767,6 +820,7 @@ with the Postgres views defined as
        </ul></li>
     </ul>
    </li>
+   <li style="color: gray">Enable compliance</li>
   </ul>
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/cms-sparql-interaction.pdf" >
@@ -782,20 +836,86 @@ with the Postgres views defined as
      non-trivial keys and substantial values</li>
    <li style="color: gray">Insight into query behavior</li>
    <li style="color: gray">Insight into data model structure</li>
-   <li>Permit abstraction
+   <li>Facilitate abstraction
     <ul>
-      <li  style="color: gray">named materilised views</li>
-      <li>scripting: combining named operations<br />
+      <li  style="color: gray">named materialised views</li>
+      <li>Scripts combine named SPARQL views and Graph Store operations:<br />
         consolidated requests
         <ul><li>transactional integrity</li>
            <li>simplified application logic</li>
         </ul></li>
     </ul>
    </li>
+   <li style="color: gray">Enable compliance</li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/cms-sparql-consolidated.pdf" >
+ <div style="position: fixed; top: 80px; right: 40px; bottom:60px; height: 440px;
+             white-space: pre; font-family: monospace ; font-size: small; line-height: 1">
+  [ a :Task ;
+  :steps ( [ a :Loop;
+           :name 'test';
+           # repeat the export process as coordinated queries on the general and specific dataset
+           # (the 'hub' and 'customer'):
+           :steps ( [ a :Query;
+                    # first, test whether changes to the specific dataset must be synchronized
+                    :steps (
+                      [ a :Decode;
+                        :location </queries/test-revision-delta-for-missing-products.rq>;
+                        :media-type 'application/sparql-query' ]
+                      [ a :Bind ; :dataset 'product-cms/hub' ]
+                      [ a :Project ; :dataset 'product-cms/hub'  ] ) ]
+                      [ a :Conditional ;
+                        # if an export is necessary,
+                        :consequent [ a :Compose;
+                                      :steps (
+                                      # address both datasets in coordinated transactions
+                                      [ a :Begin; :dataset 'product-cms/hub'
+                                                ; :dataset 'product-cms/customer' ]
+                                      [ a :Update ;
+                                        :mode 'continue'; # without auto-commit
+                                        :steps (
+                                          # to transfer the root product descriptions via a
+                                          # federated query through the specific dataset to the hub
+                                          [ a :Decode ;
+                                            :location </queries/transcribe-product-roots.rq>;
+                                            :media-type 'application/sparql-update' ]
+                                            [ a :Bind ; :dataset 'product-cms/customer' ]
+                                            [ a :Project ; :dataset 'product-cms/customer'  ]
+                                            # and then to extract and transfer the bill of
+                                            # materials by iteratively, walking the component
+                                            # graph, again, with a federated query through the
+                                            # specific dataset to the hub
+                                            [ a :Loop;
+                                              :steps (
+                                                [ a :Update ;
+                                                :mode 'continue'; # w/o auto-commit
+                                                :steps (
+                                                  [ a :Decode ;
+                                                    :location </queries/transcribe-next-constituents.rq>;
+                                                    :media-type 'application/sparql-update' ]
+                                                    [ a :Bind ; :dataset 'product-cms/customer' ]
+                                                    [ a :Project ; :dataset 'product-cms/customer'  ]
+                                                    # emit no result response, but,
+                                                    # if nothing was modified, return from the loop ; 
+                                                    [ a :Conditional ; :alternative [ a :Return] ] )])]
+                                         )])] ]
+                      # finally commit the transfer changes and close the transaction on the
+                      #  source dataset
+                      [ a :Commit ; :dataset 'product-cms/customer' ]
+                      [ a :Abort ; :dataset 'product-cms/hub' ]
+                      # after completion, emit the results of a summary query to a trigger destination
+                      [ a :Notify ;
+                        :steps ( [ a :Decode ;
+                                 :location </queries/notify-products.rq> ;
+                                 :media-type 'application/sparql-query'  ]
+                                 [ a :Bind ; :dataset 'product-cms/customer' ]
+                                 [ a :Project ; :dataset 'product-cms/customer' ]
+                                 [ a :Encode ;
+                                   :location <http://example.org/notification/destination> ;
+                                   :media-type 'application/sparql-results+json' ])])])] .
+ </div>
 </div>
+
 
 <div class="slide">
  <h1>NXP : the Data Hub : next: product data semantic curation</h1>
@@ -807,14 +927,66 @@ with the Postgres views defined as
      non-trivial keys and substantial values</li>
    <li style="color: gray">Insight into query behavior</li>
    <li style="color: gray">Insight into data model structure</li>
-   <li>Permit abstraction
+   <li>Facilitate abstraction
     <ul>
-      <li>describe the scripting ontology</li>
+      <li  style="color: gray">named materialised views</li>
+      <li>Scripts combine named SPARQL views and Graph Store operations:<br />
+        consolidated requests
+        <ul><li>transactional integrity</li>
+           <li>simplified application logic</li>
+        </ul></li>
     </ul>
    </li>
+   <li style="color: gray">Enable compliance</li>
   </ul>
  </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/cms-sparql-consolidated.pdf" >
 </div>
+
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: product data semantic curation</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint<br />
+     as a key-value store for<br />
+     non-trivial keys and substantial values</li>
+   <li style="color: gray">Insight into query behavior</li>
+   <li style="color: gray">Insight into data model structure</li>
+   <li style="color: gray">Facilitate abstraction</li>
+   <li>Enable compliance</li>
+    <ul>
+     <li>Generate provenance records as the side-effect of modifications</li>
+     <li style="color: gray">Integrate a content-hash chain in the provenance record/li>
+    </ul>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 440px" src="Images/provenance.pdf" >
+</div>
+
+
+<div class="slide">
+ <h1>NXP : the Data Hub : next: product data semantic curation</h1>
+ <div style="margin-left: 10px; width: 400px">
+ Some things are not easy, that is, things we are working on
+  <ul>
+   <li style="color: gray">A tendency to treat a SPARQL endpoint<br />
+     as a key-value store for<br />
+     non-trivial keys and substantial values</li>
+   <li style="color: gray">Insight into query behavior</li>
+   <li style="color: gray">Insight into data model structure</li>
+   <li style="color: gray">Facilitate abstraction</li>
+   <li>Enable compliance</li>
+    <ul>
+     <li style="color: gray">Generate provenance records as the side-effect of modifications</li>
+     <li>Integrate a content-hash chain in the provenance record/li>
+    </ul>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 100px; right: 10px; bottom:60px; height: 400px" src="Images/compliance-via-provenance.png" >
+</div>
+
 
 <div class="slide">
  <h1>NXP : the Data Hub : next: product data differentials</h1>
