@@ -121,14 +121,17 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 
 <div class="slide">
- <h1>NXP : the Data Hub : development support: repositories</h1>
+ <h1>NXP : the Data Hub : storage technology features</h1>
  <p>
- Features:
   <ul>
-   <li>Standards support: SPARQL1.1 Query, Update, Federated Query, Graph Store HTTP Protocol</li>
-   <li>First-class revision history, query access to revisions, temporal federation across revisions.</li>
-   <li>Materialized views and strong cache identifiers, efficient remote access to named result sets</li>
-   <li>SPARQL extensions—implicit reification, collation, temporal operators, provenance operators, etc.</li>
+   <li>Interoperability based on standards support: SPARQL 1.1 Query, Update, Federated Query, Graph Store HTTP Protocol:
+    <ul>
+     <li>Jena</li>
+     <li>Sesame</li>
+     <li>ELDA</li>
+     <li>YASGUI</li>
+    </ul>
+   </li>
    <li>All major RDF serialization formats, and others:
     <ul>
      <li>JSON-LD</li>
@@ -138,8 +141,11 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
      <li> N-Triples/ N-Quads</li>
      <li> TriX, Pajek</li>
      <li> Graphviz</li>
-     <li> etc.</li>
     </ul></li>
+   <li>First-class revisions, query access via SPARQL endpoint, temporal federation,
+     a SPARQL <tt>revision</tt> clause extension.</li>
+   <li>Materialized views and strong cache identifiers, efficient remote access to named result sets</li>
+   <li>SPARQL extensions—implicit reification, collation, temporal operators, provenance records</li>
   </ul>
  </p>
 </div>
@@ -153,41 +159,70 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
    <li>repositories</li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-admin.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/account.png" >
 </div>
 
 <div class="slide">
  <h1>NXP : the Data Hub : development support: repositories</h1>
  <div style="position: fixed; left: 40 px">
- Component access:
+ Site components:
   <ul>
-   <li>SPARQL</li>
-   <li>Analytics : eg. Graph Rover</li>
+   <li>accounts : provide multi-tenanacy
+    <ul>
+     <li>agent identity</li>
+     <li>authorization</li>
+    </ul>
+   </li>
+   <li style="color: gray">repositories</li>
+  </ul>
+ </div>
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/account.png" >
+</div>
+
+<div class="slide">
+ <h1>NXP : the Data Hub : development support: interactive access</h1>
+ <div style="position: fixed; left: 40 px">
+ Site components:
+  <ul>
+   <li style="color: gray">accounts</li>
+   <li>repositories: analytic options</li>
+    <ul>
+     <li>SPARQL</li>
+     <li>Analytics : eg. Graph Rover</li>
+     <li style="color: gray"><a href="https://jena.apache.org/documentation/notes/sse.html">SSE</a></li>
+     <li style="color: gray">algebra graph</li>
+     <li style="color: gray">algebra trace</li>
+    </ul>
+   </li>
   </ul>
  </div>
  <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-admin-query.tiff" >
 </div>
 
 <div class="slide">
- <h1>NXP : the Data Hub : development support: repositories</h1>
+ <h1>NXP : the Data Hub : development support: interactive access</h1>
  <div style="position: fixed; left: 40 px">
- Data access:
+ Site components:
   <ul>
-   <li>Graph Store protocol</li>
-   <li>Alternative encodings:
-    <ul>
-     <li> graphviz</li>
-     <li> pajek </li>
-     <li style="color: gray">circo</li>
-     <li style="color: gray"> hive</li>
-   </ul>
+   <li style="color: gray">accounts</li>
+   <li>repositories: data access options
+   <ul>
+    <li>Graph Store protocol</li>
+    <li>Alternative encodings:
+     <ul>
+      <li> graphviz</li>
+      <li> pajek </li>
+      <li style="color: gray">circo</li>
+      <li style="color: gray"> hive</li>
+    </ul></li>
   </ul>
  </div>
- <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px" src="Images/repository-admin-download.tiff" >
+ <image style="position: fixed; top: 80px; right: 10px; bottom:60px; height: 500px;
+               " src="Images/repository-admin-download.png" >
 </div>
 
 <div class="slide">
- <h1>NXP : the Data Hub : development support: repositories</h1>
+ <h1>NXP : the Data Hub : development support: interactive access</h1>
  <div style="position: fixed; left: 40 px">
  Query access: development and testing ...
   <ul>
@@ -199,7 +234,7 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 
 <div class="slide">
- <h1>NXP : the Data Hub : development support: repositories</h1>
+ <h1>NXP : the Data Hub : development support: interactive access</h1>
  <div style="position: fixed; left: 40 px">
  Query access: ... with pathway to ...
   <ul>
@@ -283,12 +318,12 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
    <table border="1" padding="2">
      <caption style="padding-bottom: 5px">access x mode combinations</caption>
      <tr><td></td>          <td>tree</td> <td>structured</td> <td>ordered</td> <td>HDT</td></tr>
-     <tr><td>archival</td> <td></td> <td></td> <td></td>
+     <tr><td>archival</td> <td></td> <td></td> <td>backup</td>
          <td><a href="http://vcftools.sourceforge.net/specs.html">VCF</a>,
              <a href="http://linkeddatafragments.org" target="_LDF">LDF</a></td>
      </tr>
      <tr><td>cache</td> <td></td> <td></td> <td>materialized views</td> <td></td></tr>
-     <tr><td>intermittent</td> <td></td> <td></td> <td>relational (PostgreSQL)</td> <td></td></tr>
+     <tr><td>intermittent</td> <td></td>  <td>relational (PostgreSQL)</td> <td></td> <td></td></tr>
      <tr><td>dynamic</td> <td>repositories</td> <td></td> <td></td> <td></td></tr>
    </table>
  </div>
@@ -297,9 +332,6 @@ Dydra : a cloud-based RDF database and SPARQL processor, delivered as a service 
 
 <div class="slide">
  <h1>NXP : the Data Hub : next: opportunistic storage architectures</h1>
- <div style="float: right">
-   table for the combinations
- </div>
  <div style="margin-left: 10px; width: 400px">
  Storage comprises two dimensions
   <ul>
